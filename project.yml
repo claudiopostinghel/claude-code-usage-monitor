@@ -1,0 +1,32 @@
+name: ClaudeUsageMonitor
+options:
+  bundleIdPrefix: com.claudiopostinghel
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+  xcodeVersion: "16.0"
+
+targets:
+  ClaudeUsageMonitor:
+    type: application
+    platform: macOS
+    sources:
+      - ClaudeUsageMonitor
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.claudiopostinghel.ClaudeUsageMonitor
+        CODE_SIGN_STYLE: Manual
+        CODE_SIGN_IDENTITY: "-"
+        SWIFT_VERSION: "6.0"
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
+        ENABLE_HARDENED_RUNTIME: NO
+        CODE_SIGNING_REQUIRED: YES
+        SWIFT_STRICT_CONCURRENCY: complete
+    info:
+      path: ClaudeUsageMonitor/Info.plist
+      properties:
+        LSUIElement: YES
+        CFBundleName: Claude Usage Monitor
+        CFBundleDisplayName: Claude Usage Monitor
+        NSHumanReadableCopyright: ""
+        NSPrincipalClass: NSApplication
