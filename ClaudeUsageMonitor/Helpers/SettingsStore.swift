@@ -7,7 +7,12 @@ final class SettingsStore {
     // MARK: - Settings fields
 
     var hasCompletedOnboarding: Bool = false { didSet { save() } }
-    var refreshIntervalSeconds: Int = 300 { didSet { save() } }
+    var refreshIntervalSeconds: Int = 300 {
+        didSet {
+            if refreshIntervalSeconds < 60 { refreshIntervalSeconds = 60 }
+            save()
+        }
+    }
     var disabledWeekdays: Set<Int> = [] { didSet { save() } }
 
     // MARK: - File location

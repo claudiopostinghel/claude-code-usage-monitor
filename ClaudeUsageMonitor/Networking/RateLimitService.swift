@@ -10,8 +10,8 @@ enum RateLimitService {
         var errorDescription: String? {
             switch self {
             case .noCredentials: "Credenziali non trovate (OAuth Claude Code o API key)"
-            case .networkError(let error): "Errore di rete: \(error.localizedDescription)"
-            case .invalidKey(let code): "Credenziali non valide (HTTP \(code))"
+            case .networkError: "Errore di rete. Controlla la connessione e riprova."
+            case .invalidKey: "Credenziali non valide. Verifica la configurazione."
             case .invalidResponse: "Risposta non valida dall'API"
             }
         }
