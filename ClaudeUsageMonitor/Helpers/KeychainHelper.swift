@@ -32,6 +32,25 @@ enum KeychainHelper {
     }
 
     static func load() -> String? {
+        #if DEBUG
+        if let envKey = ProcessInfo.processInfo.environment["ANTHROPIC_API_KEY"], !envKey.isEmpty {
+            return envKey
+        }
+        let sourceFile = URL(fileURLWithPath: #file)
+        let projectRoot = sourceFile
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+        let envFile = projectRoot.appendingPathComponent(".env")
+        if let contents = try? String(contentsOf: envFile, encoding: .utf8) {
+            for line in contents.components(separatedBy: .newlines) {
+                let parts = line.components(separatedBy: "=")
+                guard parts.count >= 2, parts[0] == "ANTHROPIC_API_KEY" else { continue }
+                let value = parts.dropFirst().joined(separator: "=").trimmingCharacters(in: .whitespaces)
+                if !value.isEmpty { return value }
+            }
+        }
+        #endif
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,

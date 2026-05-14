@@ -6,6 +6,7 @@ struct MenuBarView: View {
     @Environment(\.openSettings) private var openSettings
     @Environment(\.openWindow) private var openWindow
     @State private var copied = false
+    @State private var showUpdateInstructions = false
 
     private var authIcon: String {
         switch appState.authMethod {
@@ -100,6 +101,26 @@ struct MenuBarView: View {
 
                     Divider()
 
+                    if appState.updateAvailable, let version = appState.latestVersion {
+                        HStack(spacing: 4) {
+                            Image(systemName: "arrow.down.circle.fill")
+                                .foregroundStyle(.blue)
+                                .font(.caption)
+                            Text("Aggiornamento disponibile: v\(version)")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                            Spacer()
+                            Button("Aggiorna") {
+                                showUpdateInstructions = true
+                            }
+                            .font(.caption)
+                            .buttonStyle(.plain)
+                            .foregroundStyle(.blue)
+                        }
+
+                        Divider()
+                    }
+
                     // Footer
                     HStack {
                         if let date = appState.lastScanDate {
@@ -131,6 +152,10 @@ struct MenuBarView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(.regularMaterial)
             }
+        }
+        .sheet(isPresented: $showUpdateInstructions) {
+            UpdateInstructionsView()
+                .environment(appState)
         }
     }
 }

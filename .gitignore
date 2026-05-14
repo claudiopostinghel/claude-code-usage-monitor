@@ -24,3 +24,6 @@ Pods/
 
 # Carthage
 Carthage/Build/
+
+# Local dev secrets
+.env

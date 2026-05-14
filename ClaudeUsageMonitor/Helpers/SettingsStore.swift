@@ -14,6 +14,9 @@ final class SettingsStore {
         }
     }
     var disabledWeekdays: Set<Int> = [] { didSet { save() } }
+    var overlayScreenIndex: Int = 0 { didSet { save() } }
+    var overlayWidth: Int = 220 { didSet { save() } }
+    var overlayTopOffset: Int = 0 { didSet { save() } }
 
     // MARK: - File location
 
@@ -39,6 +42,9 @@ final class SettingsStore {
         var hasCompletedOnboarding: Bool?
         var refreshIntervalSeconds: Int?
         var disabledWeekdays: [Int]?
+        var overlayScreenIndex: Int?
+        var overlayWidth: Int?
+        var overlayTopOffset: Int?
     }
 
     // MARK: - Persistence
@@ -49,13 +55,19 @@ final class SettingsStore {
         hasCompletedOnboarding = decoded.hasCompletedOnboarding ?? false
         refreshIntervalSeconds = decoded.refreshIntervalSeconds ?? 300
         disabledWeekdays = Set(decoded.disabledWeekdays ?? [])
+        overlayScreenIndex = decoded.overlayScreenIndex ?? 0
+        overlayWidth = decoded.overlayWidth ?? 220
+        overlayTopOffset = decoded.overlayTopOffset ?? 0
     }
 
     private func save() {
         let payload = SettingsData(
             hasCompletedOnboarding: hasCompletedOnboarding,
             refreshIntervalSeconds: refreshIntervalSeconds,
-            disabledWeekdays: disabledWeekdays.sorted()
+            disabledWeekdays: disabledWeekdays.sorted(),
+            overlayScreenIndex: overlayScreenIndex,
+            overlayWidth: overlayWidth,
+            overlayTopOffset: overlayTopOffset
         )
         let encoder = JSONEncoder()
         encoder.outputFormatting = [.prettyPrinted, .sortedKeys]

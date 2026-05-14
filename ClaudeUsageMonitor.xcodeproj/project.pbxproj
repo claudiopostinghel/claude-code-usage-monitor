@@ -8,14 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		0A96A7EC25954C42582A2563 /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9848B6AD40AE91D1AF7D5F37 /* HistoryStore.swift */; };
+		1184496486C1C8F5352011DA /* OverlayBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947A7CFBF7459D33D00392F4 /* OverlayBarView.swift */; };
 		13D718922DCFF12AB465DB40 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF274DEF7B1994771818A7B /* SettingsView.swift */; };
 		2EB9349CE973D36FAEDC0F3C /* WeeklyWarningBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0672DB9CDFBCD79025374930 /* WeeklyWarningBanner.swift */; };
+		33A9B2B88626ED762EBFEABF /* UpdateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5027DE279F15F90716EDE7D5 /* UpdateChecker.swift */; };
 		489209BA21F52382EBD0E80A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B750AEB5B612A31C05DF6190 /* AppState.swift */; };
 		543ED8317C856F7E5B162157 /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC211A4055CAD0EF13A5F7B /* Formatting.swift */; };
 		58E882C68B15143732984FE3 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F706012000F414DDA3A47E6 /* KeychainHelper.swift */; };
 		6024967E85D7D6E5F69DFC90 /* RateLimitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F365620B841092C9ED6DC7E8 /* RateLimitService.swift */; };
+		75A3CE5C03B7AFEF3E57268B /* OverlayBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797C49EE3A047A1C4C290A0B /* OverlayBarController.swift */; };
 		76804DEC88482C3AA991CD2A /* RateLimitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C348406921294657BAB154BD /* RateLimitData.swift */; };
+		8BD3F262C600E54E835C0015 /* VersionManifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB5DE305D1BB324D989225 /* VersionManifest.swift */; };
 		9F9D72B7B423D20DD918B724 /* HistoryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426DB290DA05543B4DBD14EF /* HistoryEntry.swift */; };
+		A2984B0160664C24523A6159 /* UpdateInstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6B32BE92EC3C94A5FCAA4F /* UpdateInstructionsView.swift */; };
 		A68EE4EB1610962AA033B5F6 /* ClaudeUsageMonitorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7087E67A1C380A481565B0C4 /* ClaudeUsageMonitorApp.swift */; };
 		B4B395620B16C3BCB73A828C /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF521A9A15CCC1D345244FB6 /* MenuBarView.swift */; };
 		C801786864F3B2DB25314154 /* UsageHistoryChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C08C8094A3F31FAC3D05C42 /* UsageHistoryChartView.swift */; };
@@ -33,9 +38,14 @@
 		33644305E5E3AE3D4083117A /* UsageLimitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageLimitsView.swift; sourceTree = "<group>"; };
 		3F706012000F414DDA3A47E6 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		426DB290DA05543B4DBD14EF /* HistoryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryEntry.swift; sourceTree = "<group>"; };
+		5027DE279F15F90716EDE7D5 /* UpdateChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateChecker.swift; sourceTree = "<group>"; };
+		53AB5DE305D1BB324D989225 /* VersionManifest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionManifest.swift; sourceTree = "<group>"; };
 		7087E67A1C380A481565B0C4 /* ClaudeUsageMonitorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeUsageMonitorApp.swift; sourceTree = "<group>"; };
+		797C49EE3A047A1C4C290A0B /* OverlayBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayBarController.swift; sourceTree = "<group>"; };
 		8DF274DEF7B1994771818A7B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		947A7CFBF7459D33D00392F4 /* OverlayBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayBarView.swift; sourceTree = "<group>"; };
 		9848B6AD40AE91D1AF7D5F37 /* HistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStore.swift; sourceTree = "<group>"; };
+		AE6B32BE92EC3C94A5FCAA4F /* UpdateInstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInstructionsView.swift; sourceTree = "<group>"; };
 		AF521A9A15CCC1D345244FB6 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
 		B009053A70EDBBF9EA0DAF9F /* ClaudeUsageMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClaudeUsageMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B750AEB5B612A31C05DF6190 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -61,6 +71,7 @@
 			children = (
 				426DB290DA05543B4DBD14EF /* HistoryEntry.swift */,
 				C348406921294657BAB154BD /* RateLimitData.swift */,
+				53AB5DE305D1BB324D989225 /* VersionManifest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -85,10 +96,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		B4413795F069146F0A810396 /* OverlayBar */ = {
+			isa = PBXGroup;
+			children = (
+				797C49EE3A047A1C4C290A0B /* OverlayBarController.swift */,
+				947A7CFBF7459D33D00392F4 /* OverlayBarView.swift */,
+			);
+			path = OverlayBar;
+			sourceTree = "<group>";
+		};
 		B84A824687BEDCD49E73BE7A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				F365620B841092C9ED6DC7E8 /* RateLimitService.swift */,
+				5027DE279F15F90716EDE7D5 /* UpdateChecker.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -99,9 +120,11 @@
 				AF521A9A15CCC1D345244FB6 /* MenuBarView.swift */,
 				F6FA37B34B0AE3363BCCAC66 /* OnboardingView.swift */,
 				8DF274DEF7B1994771818A7B /* SettingsView.swift */,
+				AE6B32BE92EC3C94A5FCAA4F /* UpdateInstructionsView.swift */,
 				1C08C8094A3F31FAC3D05C42 /* UsageHistoryChartView.swift */,
 				33644305E5E3AE3D4083117A /* UsageLimitsView.swift */,
 				0672DB9CDFBCD79025374930 /* WeeklyWarningBanner.swift */,
+				B4413795F069146F0A810396 /* OverlayBar */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -193,12 +216,17 @@
 				58E882C68B15143732984FE3 /* KeychainHelper.swift in Sources */,
 				B4B395620B16C3BCB73A828C /* MenuBarView.swift in Sources */,
 				ECB6359FAA365923B9FB63B8 /* OnboardingView.swift in Sources */,
+				75A3CE5C03B7AFEF3E57268B /* OverlayBarController.swift in Sources */,
+				1184496486C1C8F5352011DA /* OverlayBarView.swift in Sources */,
 				76804DEC88482C3AA991CD2A /* RateLimitData.swift in Sources */,
 				6024967E85D7D6E5F69DFC90 /* RateLimitService.swift in Sources */,
 				E70A12087A5B1A2AF2F5AC5C /* SettingsStore.swift in Sources */,
 				13D718922DCFF12AB465DB40 /* SettingsView.swift in Sources */,
+				33A9B2B88626ED762EBFEABF /* UpdateChecker.swift in Sources */,
+				A2984B0160664C24523A6159 /* UpdateInstructionsView.swift in Sources */,
 				C801786864F3B2DB25314154 /* UsageHistoryChartView.swift in Sources */,
 				DFF013934214A5B77A5DC4DD /* UsageLimitsView.swift in Sources */,
+				8BD3F262C600E54E835C0015 /* VersionManifest.swift in Sources */,
 				DBEC995B75AD1097E11B223A /* WeeklyProjection.swift in Sources */,
 				2EB9349CE973D36FAEDC0F3C /* WeeklyWarningBanner.swift in Sources */,
 			);

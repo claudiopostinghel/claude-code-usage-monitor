@@ -1,9 +1,11 @@
 import SwiftUI
+import AppKit
 
 struct SettingsView: View {
     @Environment(AppState.self) private var appState
     @State private var apiKeyInput = ""
     @State private var hasAPIKey = false
+    @State private var showUpdateInstructions = false
 
     var body: some View {
         Form {
@@ -103,14 +105,100 @@ struct SettingsView: View {
                     .foregroundStyle(.tertiary)
             }
 
+            Section("Overlay Bar") {
+                let screens = NSScreen.screens
+                LabeledContent("Schermo") {
+                    VStack(alignment: .leading, spacing: 4) {
+                        ForEach(screens.indices, id: \.self) { i in
+                            HStack(spacing: 6) {
+                                Image(systemName: appState.settings.overlayScreenIndex == i ? "circle.fill" : "circle")
+                                    .font(.system(size: 11))
+                                    .foregroundStyle(appState.settings.overlayScreenIndex == i ? Color.accentColor : .secondary)
+                                Text(i == 0 ? "Schermo principale" : "Schermo \(i + 1)")
+                                    .font(.caption)
+                                    .foregroundStyle(.primary)
+                            }
+                            .contentShape(Rectangle())
+                            .onTapGesture { appState.settings.overlayScreenIndex = i }
+                        }
+                    }
+                }
+
+                LabeledContent("Larghezza") {
+                    HStack(spacing: 6) {
+                        TextField("", value: Binding(
+                            get: { appState.settings.overlayWidth },
+                            set: { appState.settings.overlayWidth = max(80, $0) }
+                        ), format: .number)
+                        .multilineTextAlignment(.trailing)
+                        .frame(width: 60)
+                        Text("px")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+
+                LabeledContent("Distanza dall'alto") {
+                    HStack(spacing: 6) {
+                        TextField("", value: Binding(
+                            get: { appState.settings.overlayTopOffset },
+                            set: { appState.settings.overlayTopOffset = max(0, $0) }
+                        ), format: .number)
+                        .multilineTextAlignment(.trailing)
+                        .frame(width: 60)
+                        Text("px")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            }
+
             Section("Azioni") {
                 Button("Aggiorna dati ora") {
                     Task { await appState.refresh() }
                 }
                 .disabled(appState.isLoading)
             }
+
+            Section {
+                LabeledContent("Versione") {
+                    Text(UpdateChecker.currentVersion)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                if appState.updateAvailable, let version = appState.latestVersion {
+                    LabeledContent("Aggiornamento") {
+                        HStack(spacing: 4) {
+                            Image(systemName: "arrow.down.circle.fill")
+                                .foregroundStyle(.blue)
+                                .font(.caption)
+                            Text("v\(version) disponibile")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    Button("Apri istruzioni di aggiornamento") {
+                        showUpdateInstructions = true
+                    }
+                } else {
+                    LabeledContent("Aggiornamento") {
+                        Text("Nessun aggiornamento disponibile")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                Button("Controlla aggiornamenti") {
+                    Task { await appState.checkForUpdate() }
+                }
+            } header: {
+                Text("Informazioni")
+            }
         }
         .formStyle(.grouped)
+        .sheet(isPresented: $showUpdateInstructions) {
+            UpdateInstructionsView()
+                .environment(appState)
+        }
         .frame(width: 400)
         .padding()
         .onAppear {

@@ -11,6 +11,12 @@ final class AppState {
     let historyStore = HistoryStore()
     let settings = SettingsStore()
 
+    var tickCounter: UInt = 0
+
+    var updateAvailable = false
+    var latestVersion: String?
+    var releaseURL: URL?
+
     var hasCompletedOnboarding: Bool {
         get { settings.hasCompletedOnboarding }
         set { settings.hasCompletedOnboarding = newValue }
@@ -23,6 +29,19 @@ final class AppState {
                 let interval = self?.settings.refreshIntervalSeconds ?? 300
                 try? await Task.sleep(for: .seconds(interval))
                 await self?.refresh()
+            }
+        }
+        Task { @MainActor [weak self] in
+            await self?.checkForUpdate()
+            while true {
+                try? await Task.sleep(for: .seconds(600))
+                await self?.checkForUpdate()
+            }
+        }
+        Task { @MainActor [weak self] in
+            while true {
+                try? await Task.sleep(for: .seconds(60))
+                self?.tickCounter &+= 1
             }
         }
     }
@@ -84,5 +103,13 @@ final class AppState {
         }
 
         rateLimitError = "Effettua il login a Claude Code per rilevare le credenziali OAuth, oppure configura una API key."
+    }
+
+    func checkForUpdate() async {
+        guard let manifest = await UpdateChecker.fetchManifest() else { return }
+        let current = UpdateChecker.currentVersion
+        updateAvailable = UpdateChecker.isNewer(remote: manifest.version, than: current)
+        latestVersion = manifest.version
+        releaseURL = manifest.releaseURL.flatMap { URL(string: $0) } ?? UpdateChecker.releasesURL
     }
 }

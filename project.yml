@@ -25,6 +25,7 @@ targets:
     info:
       path: ClaudeUsageMonitor/Info.plist
       properties:
+        CFBundleShortVersionString: "1.0.0"
         LSUIElement: YES
         CFBundleName: Claude Usage Monitor
         CFBundleDisplayName: Claude Usage Monitor
